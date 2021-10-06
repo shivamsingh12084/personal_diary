@@ -1,13 +1,72 @@
-{% extends '_base.html' %}
+{% load static %}
 {% load crispy_forms_tags %}
 
-{% block title %}Log In{% endblock title %}
+
 
 {% block content %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+  <div class="bg-img">
+    <div class="content">
+      <header>Login Form</header>
+      <form method="post">
+        {% csrf_token %}
+        <div class="field">
+          <span class="fa fa-user"></span>
+          {{form.login}}
+        </div>
+        <div class="field space">
+          <span class="fa fa-lock"></span>
+          {{form.password }}
+          <span class="show">SHOW</span>
+        </div>
+        <div class="pass">
+          <a href="#">Forgot Password?</a>
+        </div>
+        <div class="field">
+          <input type="submit" value="LOGIN">
+        </div>
+      </form>
+      <div class="login">Or login with</div>
+      <div class="links">
+        <div class="facebook">
+          <i class="fab fa-facebook-f"><span>Facebook</span></i>
+        </div>
+        <div class="instagram">
+          <i class="fab fa-instagram"><span>Instagram</span></i>
+        </div>
+      </div>
+      <div class="signup">Don't have account?
+        <a href="{% url 'account_signup' %}">Signup Now</a>
+      </div>
+    </div>
+  </div>
+
+  
+
+
+
+  
   <h2>Log In</h2>
   <form method="post">
     {% csrf_token %}
-    {{ form|crispy }}
+    {{form.remember}}
+    
+    {{form.password }}
+
+    {{form.login}}
+    
+    
+    
     <button class="btn btn-success" type="submit">Log In</button>
+    <a class="btn btn-outline-primary" href="{% url 'account_signup' %}">Sign Up</a>
+            
   </form>
+  <style>
+    .bg-img {
+      background: url("{% static 'images/home.jpg' %}");
+      height: 100vh;
+      background-size: cover;
+      background-position: center;
+    }
+  </style>
 {% endblock content %}

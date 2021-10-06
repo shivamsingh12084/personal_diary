@@ -1,14 +1,46 @@
-{% extends '_base.html' %}
 
+{% load static %}
 {% load crispy_forms_tags %}
 
-{% block title %}Sign Up{% endblock title %}
+
 
 {% block content %}
-  <h2>Sign Up</h2>
-  <form method="post">
-    {% csrf_token %}
-    {{ form|crispy }}
-    <button type="submit">Sign Up</button>
-  </form>
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+<div class="bg-img">
+  <div class="content">
+    <header>Sign Up</header>
+    <form method="post">
+      {% csrf_token %}
+      <div class="field">
+        <span class="fa fa-user"></span>
+        {{form.email}}
+      </div>
+      <div class="field space">
+        <span class="fa fa-lock"></span>
+        {{form.password1}}
+        <span class="show">SHOW</span>
+      </div>
+      <div class="field space">
+        <span class="fa fa-lock"></span>
+        {{form.password2 }}
+        <span class="show">SHOW</span>
+      </div><div class="pass">
+        <a href="#">Forgot Password?</a>
+      </div>
+      
+      <div class="field">
+        <input type="submit" value="Register">
+      </div>
+    </form>
+    
+    
+  </div>
+</div>
+<style>
+  .bg-img{
+  background: url("{% static 'images/home.jpg' %}");
+  background-size: cover;
+  background-position: center;
+}
+</style>
 {% endblock content %}

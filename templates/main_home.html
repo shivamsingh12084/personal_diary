@@ -1,0 +1,9 @@
+{% load static %}
+
+{% block content %}
+    <h1>Topics:</h1>
+    {% for topic in topics %}
+        
+        <li>{{topic.id}}: {{topic.title}}{{topic.date}}</li>
+    {% endfor %}
+{% endblock content %}

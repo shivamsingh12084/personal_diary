@@ -28,3 +28,4 @@ class HomepageTests(SimpleTestCase):
             view.func.__name__,
             HomePageView.as_view().__name__
         )
+
